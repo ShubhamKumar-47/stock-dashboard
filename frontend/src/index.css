@@ -1,0 +1,343 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BASE ================= */
+body {
+  font-family: "Inter", sans-serif;
+  background: #f4f6f9;
+  color: #111827;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ================= DARK MODE ================= */
+/* IMPORTANT: ThemeContext adds class to <html> */
+html.dark body {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+/* ================= PREMIUM BACKGROUND ================= */
+.premium-bg {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Ensure dark background is not overridden */
+html.dark .premium-bg {
+  background: #0f172a;
+}
+
+.premium-bg::before,
+.premium-bg::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+  z-index: -1;
+  animation: float 14s infinite alternate ease-in-out;
+}
+
+.premium-bg::before {
+  background: #2563eb;
+  top: -200px;
+  left: -200px;
+}
+
+.premium-bg::after {
+  background: #9333ea;
+  bottom: -200px;
+  right: -200px;
+}
+
+@keyframes float {
+  from { transform: translateY(0px); }
+  to { transform: translateY(80px); }
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(90deg, #0f172a, #1e293b);
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #60a5fa;
+}
+
+/* ================= DASHBOARD LAYOUT ================= */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: #0f172a;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar h2 {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-bottom: 15px;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.sidebar a:hover {
+  background: rgba(59,130,246,0.15);
+  color: #3b82f6;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 50px;
+}
+
+/* ================= CARDS ================= */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+/* Dark card */
+html.dark .card {
+  background: rgba(30,41,59,0.9);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ================= SEARCH ================= */
+.search-box {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+}
+
+html.dark .search-box input {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: white;
+}
+
+.search-box button {
+  padding: 14px 24px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.search-box button:hover {
+  box-shadow: 0 8px 20px rgba(37,99,235,0.4);
+}
+
+/* ================= AUTH PAGE ================= */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+}
+
+.auth-card {
+  background: white;
+  padding: 45px 40px;
+  width: 400px;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+html.dark .auth-card {
+  background: rgba(30,41,59,0.95);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.auth-card h2 {
+  margin-bottom: 10px;
+}
+
+.auth-card p {
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+html.dark .auth-card p {
+  color: #94a3b8;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 18px;
+}
+
+html.dark .auth-card input {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: white;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  cursor: pointer;
+}
+
+.auth-card button:hover {
+  box-shadow: 0 10px 25px rgba(37,99,235,0.4);
+}
+
+/* ================= DASHBOARD CARDS ================= */
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard-cards .card {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* ================= USER PANEL ================= */
+.panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.trade-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.trade-form input,
+.trade-form select {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+}
+
+html.dark .trade-form input,
+html.dark .trade-form select {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: white;
+}
+
+.trade-form button {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  cursor: pointer;
+}
+
+.trade-form button:hover {
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+}
+
+/* ================= TRANSACTION TABLE ================= */
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+html.dark .transaction-table th,
+html.dark .transaction-table td {
+  border-bottom: 1px solid #334155;
+}
+
+/* ================= STATUS COLORS ================= */
+.buy { color: #16a34a; font-weight: bold; }
+.sell { color: #dc2626; font-weight: bold; }
+.approved { color: #16a34a; font-weight: bold; }
+.rejected { color: #dc2626; font-weight: bold; }
+.pending { color: #f59e0b; font-weight: bold; }
+
+.empty-text {
+  margin-top: 15px;
+  color: #6b7280;
+}
+
+html.dark .empty-text {
+  color: #94a3b8;
+}
