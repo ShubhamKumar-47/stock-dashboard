@@ -6,7 +6,13 @@ export const getStock = async (req, res) => {
 
   try {
     const response = await axios.get(
-      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.STOCK_API_KEY}`
+      `https://api.twelvedata.com/quote?`,
+      {
+        params: {
+          symbol,
+          apikey:process.env.STOCK_API_KEY
+        }
+      }
     );
 
     res.json(response.data);
